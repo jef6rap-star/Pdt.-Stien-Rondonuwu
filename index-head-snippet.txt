@@ -1,7 +1,6 @@
-Di index.html, ganti baris ini:
-<script src="script.js" defer></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="gallery.css">
 
-Menjadi tiga baris berikut:
 <script src="gallery-data.js" defer></script>
 <script src="gallery.js" defer></script>
 <script src="script.js" defer></script>
