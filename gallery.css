@@ -1,0 +1,364 @@
+/* =========================================================
+   BINGKAI FOTO EMAS + GALERI FOTO & VIDEO
+   ========================================================= */
+
+/* Bingkai emas berlapis untuk foto utama dan foto akademik. */
+.portrait-frame {
+  padding: 15px;
+  border: 1px solid rgba(226, 190, 112, .95);
+  background: linear-gradient(145deg, rgba(255, 246, 218, .22), rgba(137, 99, 45, .22));
+  box-shadow: 0 18px 42px rgba(30, 16, 48, .24), 0 0 0 4px rgba(196, 155, 82, .13);
+}
+.portrait-frame::before {
+  inset: 5px;
+  border: 1px solid rgba(247, 220, 160, .82);
+}
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(255, 239, 195, .38);
+  pointer-events: none;
+}
+.portrait-accent {
+  width: 88px;
+  height: 88px;
+  border-top-color: #f0d18b;
+  border-left-color: #f0d18b;
+}
+.academic-image {
+  position: relative;
+  padding: 13px;
+  border: 1px solid rgba(205, 164, 87, .95);
+  background: linear-gradient(145deg, rgba(255, 248, 224, .92), rgba(159, 117, 51, .22));
+  box-shadow: 0 16px 36px rgba(43, 27, 57, .16), 0 0 0 4px rgba(196, 155, 82, .12);
+}
+.academic-image::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(247, 220, 160, .9);
+  pointer-events: none;
+  z-index: 2;
+}
+.academic-image img {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Galeri */
+.gallery-section {
+  position: relative;
+  overflow: hidden;
+  background: rgba(246, 239, 251, .82);
+}
+.gallery-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.gallery-section .section-topline h2 {
+  color: #39264f;
+}
+.gallery-section .section-topline h2 em {
+  color: #79549b;
+}
+.gallery-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 26px 0 25px;
+  padding: 13px 16px;
+  border: 1px solid rgba(190, 151, 83, .35);
+  background: rgba(255, 255, 255, .62);
+  color: #5e5068;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.gallery-note-mark {
+  color: #a67b35;
+  font-size: 17px;
+  line-height: 1.2;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.gallery-card {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid rgba(196, 155, 82, .9);
+  background: linear-gradient(145deg, #fff9e9 0%, #e9d5a8 45%, #b58b4c 100%);
+  box-shadow: 0 14px 34px rgba(53, 37, 69, .12), 0 0 0 4px rgba(190, 148, 72, .10);
+}
+.gallery-card-inner {
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, .85);
+  background: rgba(255, 255, 255, .94);
+}
+.gallery-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #e7dced;
+}
+.gallery-media::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(235, 205, 137, .86);
+  pointer-events: none;
+  z-index: 2;
+}
+.gallery-media img,
+.gallery-media video,
+.gallery-media iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+.gallery-media iframe {
+  position: relative;
+  z-index: 1;
+}
+.gallery-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.gallery-image-link img {
+  transition: transform .55s ease;
+}
+.gallery-card:hover .gallery-image-link img {
+  transform: scale(1.035);
+}
+.gallery-copy {
+  padding: 16px 17px 18px;
+}
+.gallery-category {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: #98713a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.gallery-copy h3 {
+  margin: 0;
+  color: #39264f;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.gallery-copy p {
+  margin: 8px 0 0;
+  color: #6c6372;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.gallery-placeholder {
+  display: flex;
+  height: 100%;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  color: #f8f0df;
+  text-align: center;
+  background:
+    linear-gradient(rgba(52, 33, 71, .76), rgba(52, 33, 71, .82)),
+    url("assets/portrait-academic.jpg") center 25% / cover;
+}
+.gallery-play-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  padding-left: 3px;
+  border: 1px solid rgba(243, 213, 151, .9);
+  border-radius: 50%;
+  color: #f5d998;
+  font-size: 18px;
+}
+.gallery-placeholder strong {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 500;
+}
+.gallery-placeholder span {
+  max-width: 260px;
+  color: rgba(255,255,255,.82);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.gallery-empty {
+  grid-column: 1 / -1;
+  padding: 28px;
+  border: 1px dashed rgba(166, 123, 53, .55);
+  color: #685a70;
+  text-align: center;
+  background: rgba(255,255,255,.55);
+}
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .gallery-card { padding: 8px; }
+  .gallery-copy { padding: 14px; }
+  .gallery-copy h3 { font-size: 20px; }
+  .gallery-note { font-size: 12px; }
+  .academic-image { padding: 10px; }
+}
+
+
+/* =========================================================
+   TEKS CALON WAKA — LEBIH BESAR PADA COVER
+   ========================================================= */
+.candidate-label {
+  gap: 13px;
+  padding: 15px 22px;
+  font-size: clamp(15px, 1.25vw, 19px);
+  font-weight: 800;
+  letter-spacing: .075em;
+  line-height: 1.45;
+  border-width: 1.5px;
+  text-shadow: 0 1px 10px rgba(0,0,0,.18);
+}
+.candidate-label-mark {
+  font-size: 20px;
+}
+@media (max-width: 700px) {
+  .candidate-label {
+    max-width: 100%;
+    font-size: 13px;
+    letter-spacing: .035em;
+    padding: 12px 14px;
+    line-height: 1.5;
+  }
+  .candidate-label-mark {
+    font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   BINGKAI EMAS PREMIUM — FOTO PROFIL & FOTO AKADEMIK
+   ========================================================= */
+.portrait-frame {
+  position: relative;
+  padding: 17px !important;
+  border: 2px solid #d8b66d !important;
+  background: linear-gradient(145deg, #fff4d5 0%, #c49a4b 35%, #f8e5b4 58%, #9b7131 100%) !important;
+  box-shadow:
+    0 20px 46px rgba(28, 15, 43, .30),
+    0 0 0 5px rgba(211, 173, 95, .22),
+    inset 0 0 0 2px rgba(255,255,255,.72) !important;
+}
+.portrait-frame::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 6px !important;
+  border: 1px solid rgba(255, 247, 221, .96) !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+.portrait-frame::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 2px !important;
+  border: 1px solid rgba(125, 86, 27, .65) !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+.portrait-frame > img {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, .9);
+}
+.academic-image {
+  position: relative;
+  padding: 15px !important;
+  border: 2px solid #c69a4c !important;
+  background: linear-gradient(145deg, #fff5dc, #d2ae6d 50%, #a77b35) !important;
+  box-shadow:
+    0 16px 38px rgba(45, 27, 58, .18),
+    0 0 0 5px rgba(190, 145, 66, .16),
+    inset 0 0 0 2px rgba(255,255,255,.8) !important;
+}
+.academic-image::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255, 247, 221, .96);
+  pointer-events: none;
+  z-index: 3;
+}
+.academic-image img {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   TULISAN CALON WAKA — UKURAN LEBIH BESAR & MENONJOL
+   ========================================================= */
+.candidate-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 100%;
+  padding: 17px 24px;
+  margin: 0 0 22px;
+  border: 2px solid rgba(236, 205, 137, .98);
+  border-radius: 5px;
+  background: linear-gradient(110deg, rgba(255,255,255,.16), rgba(229,199,139,.12));
+  color: #fff0c9;
+  font-size: clamp(22px, 2.3vw, 32px);
+  font-weight: 900;
+  letter-spacing: .045em;
+  line-height: 1.35;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  box-shadow:
+    0 9px 25px rgba(24, 12, 39, .2),
+    inset 0 0 0 2px rgba(255,255,255,.08);
+  backdrop-filter: blur(8px);
+}
+.candidate-label-mark {
+  color: #ffe2a0;
+  font-size: 1.08em;
+  flex: 0 0 auto;
+}
+@media (max-width: 700px) {
+  .candidate-label {
+    display: flex;
+    width: 100%;
+    padding: 13px 12px;
+    margin-bottom: 18px;
+    gap: 8px;
+    font-size: 18px;
+    letter-spacing: .025em;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 380px) {
+  .candidate-label {
+    font-size: 16px;
+    padding: 12px 9px;
+  }
+}

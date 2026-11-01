@@ -1,0 +1,7 @@
+Di index.html, ganti baris ini:
+<script src="script.js" defer></script>
+
+Menjadi tiga baris berikut:
+<script src="gallery-data.js" defer></script>
+<script src="gallery.js" defer></script>
+<script src="script.js" defer></script>
