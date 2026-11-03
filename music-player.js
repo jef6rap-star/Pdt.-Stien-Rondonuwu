@@ -1,36 +1,21 @@
+/*
+ * Pemutar musik latar website.
+ * Audio disajikan dari file MP3 yang di-host bersama GitHub Pages.
+ * Autoplay dicoba saat halaman dibuka; jika diblokir browser, gunakan kontrol ▶.
+ */
 (() => {
-  const AUDIO_URL = "https://drive.google.com/uc?export=download&id=1Tjrn-A4qDEwMEUDI6ippvG3_gF71W_M9";
+  const AUDIO_URL = "./assets/Melayani-Mengasihi-Lebih-Sungguh.mp3?v=2";
   const SONG_TITLE = "Melayani, Mengasihi Lebih Sungguh";
 
   function initMusicPlayer() {
     if (document.querySelector(".site-music-player")) return;
 
-    const audio = document.createElement("audio");
-    audio.id = "site-background-music";
-    audio.src = AUDIO_URL;
-    audio.preload = "auto";
-    audio.loop = true;
-    audio.autoplay = true;
-    audio.setAttribute("playsinline", "");
-
-    const player = document.createElement("div");
+    const player = document.createElement("section");
     player.className = "site-music-player";
+    player.setAttribute("aria-label", "Pemutar musik latar");
 
-    const button = document.createElement("button");
-    button.className = "site-music-player__button";
-    button.type = "button";
-    button.setAttribute("aria-label", "Putar musik latar");
-
-    const symbol = document.createElement("span");
-    symbol.setAttribute("aria-hidden", "true");
-    symbol.textContent = "♪";
-
-    const buttonLabel = document.createElement("span");
-    buttonLabel.textContent = "Putar Musik";
-    button.append(symbol, buttonLabel);
-
-    const note = document.createElement("div");
-    note.className = "site-music-player__note";
+    const heading = document.createElement("div");
+    heading.className = "site-music-player__heading";
 
     const title = document.createElement("span");
     title.className = "site-music-player__title";
@@ -39,41 +24,54 @@
     const status = document.createElement("span");
     status.className = "site-music-player__status";
     status.setAttribute("aria-live", "polite");
-    status.textContent = "Musik latar website";
+    status.textContent = "Musik latar";
 
-    note.append(title, status);
-    player.append(button, note);
-    document.body.append(audio, player);
+    heading.append(title, status);
 
-    function updateState(playing) {
-      buttonLabel.textContent = playing ? "Jeda Musik" : "Putar Musik";
-      button.setAttribute("aria-label", playing ? "Jeda musik latar" : "Putar musik latar");
-      status.textContent = playing ? "Sedang diputar · berulang" : "Sentuh untuk mendengarkan";
-    }
+    const audio = document.createElement("audio");
+    audio.id = "site-background-music";
+    audio.src = AUDIO_URL;
+    audio.preload = "metadata";
+    audio.loop = true;
+    audio.autoplay = true;
+    audio.controls = true;
+    audio.setAttribute("playsinline", "");
+    audio.setAttribute("aria-label", "Putar atau jeda musik latar");
 
-    audio.addEventListener("play", () => updateState(true));
-    audio.addEventListener("pause", () => updateState(false));
+    audio.addEventListener("playing", () => {
+      status.textContent = "Sedang diputar · berulang";
+    });
+    audio.addEventListener("pause", () => {
+      status.textContent = "Dijeda";
+    });
+    audio.addEventListener("waiting", () => {
+      status.textContent = "Memuat musik…";
+    });
+    audio.addEventListener("canplay", () => {
+      if (audio.paused) status.textContent = "Tekan ▶ untuk memutar";
+    });
     audio.addEventListener("error", () => {
-      status.textContent = "Audio belum dapat diakses";
-      buttonLabel.textContent = "Coba Putar";
+      status.textContent = "Musik gagal dimuat. Muat ulang halaman.";
     });
 
-    button.addEventListener("click", async () => {
-      if (!audio.paused) {
-        audio.pause();
-        return;
-      }
-      try {
-        await audio.play();
-      } catch (error) {
-        status.textContent = "Periksa izin akses file musik";
-      }
-    });
+    player.append(heading, audio);
+    document.body.appendChild(player);
 
+    // Autoplay bersuara hanya berhasil bila diizinkan oleh kebijakan browser.
     audio.play().catch(() => {
-      updateState(false);
-      status.textContent = "Sentuh Putar Musik untuk mulai";
+      status.textContent = "Tekan ▶ pada pemutar untuk mulai";
     });
+
+    // Interaksi pertama pada halaman juga mencoba memulai musik.
+    const startAfterInteraction = () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+      document.removeEventListener("pointerdown", startAfterInteraction);
+      document.removeEventListener("keydown", startAfterInteraction);
+    };
+    document.addEventListener("pointerdown", startAfterInteraction, { once: true });
+    document.addEventListener("keydown", startAfterInteraction, { once: true });
   }
 
   if (document.readyState === "loading") {
