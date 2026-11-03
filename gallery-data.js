@@ -1,20 +1,6 @@
 /*
- * DATA GALERI WEBSITE — EDIT FILE INI UNTUK MENAMBAH / MENGUBAH FOTO & VIDEO.
- *
- * FOTO:
- * 1. Upload foto ke folder assets/gallery/
- * 2. Tambahkan item type "image" dengan src sesuai nama file.
- *
- * VIDEO MP4:
- * 1. Upload video ke folder assets/videos/
- * 2. Tambahkan item type "video" dan isi src, contoh:
- *    src: "assets/videos/ibadah-sinode.mp4"
- *
- * VIDEO YOUTUBE:
- * Isi src dengan URL YouTube lengkap, contoh:
- *    src: "https://www.youtube.com/watch?v=VIDEO_ID"
- *
- * Hapus item dari daftar ini jika tidak ingin ditampilkan.
+ * DATA GALERI WEBSITE — FOTO & VIDEO DOKUMENTASI
+ * Video disimpan di Google Drive dan diputar langsung dari galeri.
  */
 window.GALLERY_ITEMS = [
   {
@@ -35,10 +21,30 @@ window.GALLERY_ITEMS = [
   },
   {
     type: "video",
-    title: "Dokumentasi Pelayanan",
-    category: "Video",
-    src: "",
-    poster: "assets/portrait-academic.jpg",
-    description: "Slot video siap diisi dengan tautan YouTube atau file MP4."
+    title: "Dokumentasi Pelayanan 01",
+    category: "Video Pelayanan",
+    src: "https://drive.google.com/file/d/1FvRWq-BqEbLz6dIO5f1xOnNtTTyzQ-HQ/view",
+    description: "Rekaman dokumentasi perjalanan pelayanan."
+  },
+  {
+    type: "video",
+    title: "Dokumentasi Pelayanan 02",
+    category: "Video Pelayanan",
+    src: "https://drive.google.com/file/d/1kOUJyszoGoD5DMA09qf-8J4yVGVs98NA/view",
+    description: "Rekaman dokumentasi perjalanan pelayanan."
+  },
+  {
+    type: "video",
+    title: "Dokumentasi Pelayanan 03",
+    category: "Video Pelayanan",
+    src: "https://drive.google.com/file/d/1j-qW7mgF_afUcfLiU7ADkcBWccUcE6v2/view",
+    description: "Rekaman dokumentasi perjalanan pelayanan."
+  },
+  {
+    type: "video",
+    title: "Dokumentasi Pelayanan 04",
+    category: "Video Pelayanan",
+    src: "https://drive.google.com/file/d/1iXIrQDbgCG7bj0LfGflq9zQv1erKuanI/view",
+    description: "Rekaman dokumentasi perjalanan pelayanan."
   }
 ];
